@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Task 5</title>
+</head>
+
+<body>
+	<script>
+		//Розробити клас «Керівник танців»
+		//====Поля====
+		//-масив імен хлопців
+		//-масив імен дівчат
+		//===Методи===
+		//-метод випадкового вибору імені хлопця
+		//-метод випадкового вибору імені дівчини
+		//-метод виведення пари для танців
+		//-метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+		class Dance{
+			constructor(){
+				this.boys = ['Павло', 'Олександр', 'Костя', 'Юрій', 'Євген'],
+				this.girls = ['Катерина', 'Аліна', 'Ольга', 'Тетяна', 'Юлія', 'Яна', 'Ірина']
+			}
+			//-метод випадкового вибору імені хлопця
+			chooseBoy(){
+				let randomNumber = Math.floor(Math.random()*this.boys.length)
+				return this.boys[randomNumber]
+			}
+			//-метод випадкового вибору імені дівчини
+			chooseGirl(){
+				let randomNumber = Math.floor(Math.random()*this.girls.length)
+				return this.girls[randomNumber]
+			}
+			//-метод виведення пари для танців
+			chooseCouple(){
+				let randomBoy = Math.floor(Math.random()*this.boys.length)
+				let randomGirl = Math.floor(Math.random()*this.girls.length)
+				return this.boys[randomBoy] + ' та ' + this.girls[randomGirl]
+			}
+			//метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+			run(){
+				setInterval(
+					() => {alert(this.chooseCouple())}
+					,5000
+				)
+			}
+		}
+		let danceClass = new Dance()
+		document.write(`<p>Випадковий хлопець: <span>${danceClass.chooseBoy()}</span>.</p>`)
+		document.write(`<p>Випадкова дівчина: <span>${danceClass.chooseGirl()}</span>.</p>`)
+		document.write(`<p>Пара для танцю: <span>${danceClass.chooseCouple()}</span>.</p>`)
+		danceClass.run()
+	</script>
+</body>
+</html>

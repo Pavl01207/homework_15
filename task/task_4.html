@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Task 4</title>
+</head>
+
+<body>
+	<script>
+		//Розробити клас Baner
+		//====Поля=====
+		//-масив об’єктів ( графічних зображень та посилань на сайти)
+		//===Mетоди====
+		//-метод випадкового вибору об’єкта (графічного зображення та посилання)
+		//-метод виведення випадкового банера
+		class Baner{
+			constructor(){
+				this.banerArray = [
+				{
+					image: '<a href="https://www.pexels.com/uk-ua/" target="_blanck"><img src="../task/image/01.jpeg"></a>',
+					address: 'https://www.pexels.com/uk-ua/'
+				},
+				{
+					image: '<a href="https://www.pexels.com/uk-ua/" target="_blanck"><img src="../task/image/02.jpeg"></a>',
+					address: 'https://www.pexels.com/uk-ua/'
+				},
+				{
+					image: '<a href="https://www.pexels.com/uk-ua/" target="_blanck"><img src="../task/image/03.jpeg"></a>',
+					address: 'https://www.pexels.com/uk-ua/'
+				},
+				{
+					image: '<a href="https://www.pexels.com/uk-ua/" target="_blanck"><img src="../task/image/04.jpeg"></a>',
+					address: 'https://www.pexels.com/uk-ua/'
+				},
+				{
+					image: '<a href="https://www.pexels.com/uk-ua/" target="_blanck"><img src="../task/image/05.jpeg"></a>',
+					address: 'https://www.pexels.com/uk-ua/'
+				}
+				]
+			}
+			//-метод випадкового вибору об’єкта (графічного зображення та посилання)
+			chooseObj(){
+				const randomNumber = Math.floor(Math.random()*this.banerArray.length)
+				return this.banerArray[randomNumber]
+			}
+			//-метод виведення випадкового банера
+			showBanner(){
+				return document.write(`${this.chooseObj().image}`)
+			}
+		}
+		let banerObj = new Baner()
+		banerObj.showBanner()
+	</script>
+</body>
+</html>

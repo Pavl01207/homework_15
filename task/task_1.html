@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Task 1</title>
+</head>
+
+<body>
+	<script>
+	//Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+	//-----властивості------
+	//-масив заповнений 0(там де зайця немає) та 1(там де заєць є)
+	//-----Методи----------
+	//-постріл (задається позиція пострілу)
+	//-виведення ігрового поля
+	//1.Створення об'єкта  використанням конструктура
+	function Tir (initNumbers){
+		this.field = initNumbers
+	}
+	Tir.prototype.makeShot = function(shot){
+		(this.field[shot] === `&#128007`) ? this.field[shot] = `&#128077` : this.field[shot] = `&#128078`
+		return this.field
+	}
+	Tir.prototype.showField = function(){
+		document.write(`<p>${this.field}</p>`)
+	}
+	//масив із випадковими 0 та 1
+	let field = new Array(10).fill(0)
+	function putRabbits(arr){
+		for(let i = 0; i < 5; i++){
+			let randomIndex = Math.floor(Math.random() * (arr.length + 1))
+			arr[randomIndex] = `&#128007`
+		}
+		return arr
+	}
+	let gameField = putRabbits(field)
+	let userShot = parseInt(prompt('Введіть координати для пострілу(від 1 до 10)'))
+	let gameObj = new Tir(gameField)
+	gameObj.makeShot(userShot-1)
+	gameObj.showField()
+	document.write(`<p>&#128077 - влучний постріл, &#128078 - промах.</p>`)
+	</script>
+</body>
+</html>

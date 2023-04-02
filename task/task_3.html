@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Task 3</title>
+</head>
+
+<body>
+	<script>
+		//Розробити клас MultChecker для перевірки таблиці множення
+		//----Поля-----
+		//= число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+		//= кількість правильних відповідей
+		//= кількість неправильних відповідей
+		//----Методи-----
+		//= генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+		//= перевірка правильності вказаної відповіді
+		//= render - виведення інформації про тестування на екран
+		class MultChecker{
+			constructor(initNumber){
+				this.number = initNumber,
+				this.correct = 0,
+				this.incorrect = 0
+			}
+			//генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+			exampleGeneration(randomSecondNumber){
+				return this.number * randomSecondNumber
+			}
+			//перевірка правильності вказаної відповіді
+			correctnessCheck(answer){
+				if(this.exampleGeneration() === answer) return this.correct++
+				else return this.incorrect++
+			}
+			//render - виведення інформації про тестування на екран
+			render(){
+				return `<p>Кількість правильних відповідей: <span>${this.correct}</span>, кількість неправильних відповідей: <span>${this.incorrect}</span>.</p>`
+			}
+		}
+		let testProduct = new MultChecker(5)
+		const randomSecondNumber = 1 + Math.floor(Math.random() * 10)
+		let userAnswer = parseInt(prompt(`5 * ${randomSecondNumber} = `))
+		testProduct.exampleGeneration(randomSecondNumber)
+		testProduct.correctnessCheck(userAnswer)
+		document.write(testProduct.render())
+	</script>
+</body>
+</html>
